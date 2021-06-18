@@ -43,12 +43,20 @@
                         - If noone catches you and the next player plays or draws you are safe
                 - has to be a matching color, or id
                     - id being number, or wild, draw2, etc.
-                - If draw2 player up next gets dealt 2 more cards and their turn is over
+                - If draw2 player up next picks up 2 cards and their turn is over
                 - If wild player who played card gets to change the required color
                 - If skip next player doesn't get to play, they are skipped
                 - If reverse the direction of play is reversed
-                - If wild draw 4 played player who played gets to change color and next player has to pick up four
-                    - Extra rules
+                - If wild draw 4 played player who played gets to change color, next player has to pick up, and cannot play
+                    - Draw 4 is supposed to be played only when you have no other cards to be played
+                        - Can be played illegally
+                    - When played the victim can challenge that the card was played illegally
+                        - If victim was correct and the challenge passes 
+                            - player must draw 4 cards 
+                            - play passes to next player
+                        - If victim is wrong and therefor the challenge fails
+                            - victim must pick up 6 cards 
+                            - play passes beyond victim to next player 
     - End Round
         - When any player runs out of cards
             - **ALL** points awarded to player who goes out first for each round

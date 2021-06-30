@@ -5,13 +5,22 @@
     1. Make Uno description 
     1. send to Dan by Friday
 
-# Uno Game
+    ## Setting up OpenAPI 
+This isn't the only way to do this but it's a good way. It lets us generate documents that are human readable so other people can consume our API
+
+1. Install [OpenAPI Editor](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi)
+1. See the example of what an API document can look like by looking at the [Smartwyre API](https://docs.smartwyre.info/)
+1. Look at the [Swagger documentation](https://swagger.io/docs/specification/basic-structure/) to see how to fill the fields in
+1. Follow the quickstart guide for developing your first bit of documentation
+
+# Uno Game - Classic Rules
 - See list of games
     - load screen
 - Join game
     - List of players
         - x number shows up game starts
-- Create game
+- Create game  
+    -
 - Start game
     - Draw pile contains 108 cards
         - 19 Blue 0-9 
@@ -65,9 +74,6 @@
             - Wild, and Wild Draw 4 worth 50 points each
         - Prompt next round to start
 - End Game
-    - Prompt rematch
-# Uno Rules
-- End Game
     - First player to reach 500 points
         - **ALL** points awarded to player who goes out first for each round
             - Number cards (0-9) worth face value
@@ -77,7 +83,59 @@
 - Multiple sets
     - official
         - two player
+            - Change target score
+            - Make optional anyway
         - More than two
     - house
+        - reverse scoring
+        - Passing on drawcards
+    - reverse
+        - Has a "dark side"
     - challenge
 # Uno API
+- Get
+    - Lobby?
+    - 200
+        - OK
+    - 400
+        - Bad Request
+    - 500
+        - Internal ERROR
+- Post
+    - Entered Game
+        - Status
+    - 200
+        - OK
+    - 400
+        - Bad Request
+    - 500
+        - Internal ERROR
+- Post
+    - Played turn
+        - Played card
+        - Drew Card
+        - Skipped?
+            - probably shouldn't give your chance to play
+        - Call UNO
+    - 200
+        - OK
+    - 400
+        - Bad Request
+    - 500
+        - Internal ERROR
+            - Not your turn
+- Get 
+    - State of Board
+        - My cards
+        - Number of cards in each opponent hand
+        - Number of cards in Deck?
+            - Not really important I don't think
+
+
+
+
+# Exercise
+- Start screen
+    - loads list of games /games -get
+        - join game
+    - create game

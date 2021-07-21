@@ -72,6 +72,10 @@
                         "type": "integer",
                         "nullable": false,
                         "minimum": 0
+                    },
+                    "Status":{
+                        "type": "string",
+                        "nullable": false
                     }
                 }
             },
@@ -94,7 +98,8 @@
                             "Draw 2",
                             "Skip",
                             "Reverse",
-                            "Draw 4"
+                            "Draw 4",
+                            "Wild"
                         ],
                         "nullable": false
                     },

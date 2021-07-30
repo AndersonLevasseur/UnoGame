@@ -68,12 +68,16 @@
                         "type": "string",
                         "nullable": false
                     },
+                    "id":{
+                        "type": "string",
+                        "nullable": false
+                    },
                     "cardCount": {
                         "type": "integer",
                         "nullable": false,
                         "minimum": 0
                     },
-                    "Status":{
+                    "status":{
                         "type": "string",
                         "nullable": false
                     }
@@ -247,6 +251,18 @@
                             "type": "string",
                             "nullable": false
                         }
+                    },
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who is getting the game",
+                        "example": "anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
                     }
                 ],
                 "responses": {
@@ -302,11 +318,11 @@
                         }
                     },
                     {
-                        "name": "userName",
+                        "name": "userId",
                         "in": "query",
                         "required": true,
                         "allowEmptyValue": false,
-                        "description": "Name of player joining game",
+                        "description": "The id of the player joining the game",
                         "example": "Dan",
                         "schema": {
                             "type": "string",
@@ -326,6 +342,20 @@
         "/games/{gameId}/deck": {
             "post": {
                 "summary": "Returns a card pulled from the deck and into your hand.",
+                "parameters": [
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who has just drawn a card",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK - Card has been added to your deck",
@@ -349,6 +379,20 @@
         "/games/{gameId}/hand": {
             "get": {
                 "summary": "Retrieve a list of the cards in your hand.",
+                "parameters": [
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who has just drawn a card",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -370,6 +414,20 @@
             },
             "post": {
                 "summary": "Play a card from your hand.",
+                "parameters": [
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who has just drawn a card",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    }
+                ],
                 "requestBody": {
                     "description": "The card that is to be played. Must be a card that exists in your hand.",
                     "required": true,
@@ -414,6 +472,18 @@
             "post": {
                 "summary": "Calls UNO for yourself, or calls a player for failing to say 'Uno!'",
                 "parameters": [
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who is calling UNO",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    },
                     {
                         "name": "callFor",
                         "in": "query",

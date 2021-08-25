@@ -136,6 +136,85 @@ This isn't the only way to do this but it's a good way. It lets us generate docu
 
 # Exercise
 - Start screen
-    - loads list of games /games -get
+    1. Asks for username
+        - max 16 char
+            - *POST to establish user*
+    1. loads list of games 
+        - *Get lobby*
         - join game
-    - create game
+        - *Post user to game*
+            - *Returns List of Games*
+    1. create game
+        - *Post to game to lobby*
+- Game loading screen
+    - View other player
+        - *Get another lobby?*
+    - Ready button
+        - Once all players "ready" start, or countdown to start
+            - *pressing will be a **POST**, changing users ready status*
+- Game
+    - *player **GET** to receive cards and info about who's turn is next*
+    - rounds
+        - only one for now
+            - first to run out of cards
+        - Play card
+        - Draw card
+        - Call "UNO" **POST**
+        - Call someone else for "UNO"
+            - can't be a post because then you always get called
+- Post Game screen
+    - Shows all the players with the position they finish in
+        - **GET**
+        - Countdown starts until next game start
+            - 64 seconds
+            - Everyplayer has a MIA or Rematch status
+                - Post to game your status when you decide
+                    - If you leave it posts a MIA?
+
++ Post
+    + announce presence/assign a username
+    + 200
+        + Ok
+    + 400
+        + Bad Request
+            + Username of 16 characters
+    + 500
+        + Internal Error
++ Post 
+    + create game
+    + 200
+        + Ok
+    + 400
+        + Bad Request
+    + 500
+        + Internal Error
++ Get 
+    + Getlist of games
+        + options of being played currently or open for people to join
+    + 200
+        + Ok
+    + 500
+        + Internal Error
++ Get 
+    + Used for playing, returns the active game
+        + players, cards in your hand, number of opponents cards, etc.
+    + 200
+        + Ok
+    + 500
+        + Internal Error
++ Post
+    + Call UNO for/at last player
+    + 200
+        + Ok
+    + 400
+        + Bad Request
+    + 500
+        + Internal Error
++ Post
+    + Play a card
+    + 200
+        + Ok
+    + 400
+        + Bad Request
+    + 500
+        + Internal Error

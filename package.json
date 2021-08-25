@@ -1,0 +1,24 @@
+{
+  "name": "UnoGame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndersonLevasseur/UnoGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndersonLevasseur/UnoGame/issues"
+  },
+  "homepage": "https://github.com/AndersonLevasseur/UnoGame#readme",
+  "dependencies": {
+    "@koa/router": "^10.1.0",
+    "koa": "^2.13.1"
+  }
+}

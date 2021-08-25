@@ -468,9 +468,9 @@
                 }
             }
         },
-        "/games/{gameId}/calls": {
+        "/gmaes/{gameId)/offensiveCall": { 
             "post": {
-                "summary": "Calls UNO for yourself, or calls a player for failing to say 'Uno!'",
+                "summary": "Calls UNO against opponent",
                 "parameters": [
                     {
                         "name": "playerId",
@@ -485,12 +485,63 @@
                         }
                     },
                     {
-                        "name": "callFor",
+                        "name": "playerId",
                         "in": "query",
-                        "description": "To call for yourself, use your own seatPosition. To call another player who has failed to say 'Uno!', use that player's seatPosition",
-                        "example": "0",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who is getting UNO called against them",
+                        "example": "Dan",
                         "schema": {
-                            "type": "integer",
+                            "type": "string",
+                            "nullable": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content - call has succeeded"
+                    },
+                    "400": {
+                        "description": "Bad Request - invalid parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "description": "The invalid parameter",
+                                        "type": "string",
+                                        "example": "seatPosition: must be a whole number"
+                                    },
+                                    "description": "Message describing parameter error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found - seat position does not exist"
+                    },
+                    "409": {
+                        "description": "Conflict - call is not successful. It is either in violation of the rules, or another player has already called 'Uno!'"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/games/{gameId}/defensiveCall": {
+            "post": {
+                "summary": "Calls UNO for yourself",
+                "parameters": [
+                    {
+                        "name": "playerId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who is calling UNO",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
                             "nullable": false
                         }
                     }

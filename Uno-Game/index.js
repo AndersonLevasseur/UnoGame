@@ -1,27 +1,38 @@
 'use strict';
 
-const http = require('http');
-const server = require('./server');
+const Koa = require('koa');
+const server = require('@koa/router');
 
-const { port } = require('./config').server;
+const app = new Koa();
+const router = new Router();
 
-async function bootstrap() {
-  /**
-   * Add external services init as async operations (db, redis, etc...)
-   * e.g.
-   * await sequelize.authenticate()
-   */
-  return http.createServer(server.callback()).listen(port);
-}
+router.get('/', (ctx, next) => {
+  ctx.body = 'Some string';
+});
 
-bootstrap()
-  .then(server =>
-    console.log(`🚀 Server listening on port ${server.address().port}!`),
-  )
-  .catch(err => {
-    setImmediate(() => {
-      console.error('Unable to run the server because of the following error:');
-      console.error(err);
-      process.exit();
-    });
-  });
+app.use(router.routes())
+  .use(router.allowedMethods())
+  .listen(3001);
+
+// const { port } = require('./config').server;
+
+// async function bootstrap() {
+//   /**
+//    * Add external services init as async operations (db, redis, etc...)
+//    * e.g.
+//    * await sequelize.authenticate()
+//    */
+//   return http.createServer(server.callback()).listen(port);
+// }
+
+// bootstrap()
+//   .then(server =>
+//     console.log(`🚀 Server listening on port ${server.address().port}!`),
+//   )
+//   .catch(err => {
+//     setImmediate(() => {
+//       console.error('Unable to run the server because of the following error:');
+//       console.error(err);
+//       process.exit();
+//     });
+//   });

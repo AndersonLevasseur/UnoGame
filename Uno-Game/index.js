@@ -12,7 +12,7 @@ router.get('/', (ctx, next) => {
 
 app.use(router.routes())
   .use(router.allowedMethods())
-  .listen(3001);
+  .listen(80);
 
 // const { port } = require('./config').server;
 

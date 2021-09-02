@@ -129,6 +129,46 @@
         }
     },
     "paths": {
+        "/games/{gameId}/statusCall": {
+            "post": {
+                "description": "Announce your status",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the player who has announced status",
+                        "example": "Anderson",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The status of the player who is announcing status",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "not ready",
+                                "ready",
+                                "paused"
+                            ],
+                            "nullable": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/games": {
             "get": {
                 "summary": "Returns a list of the available games.",
@@ -344,7 +384,7 @@
                 "summary": "Returns a card pulled from the deck and into your hand.",
                 "parameters": [
                     {
-                        "name": "playerId",
+                        "name": "userId",
                         "in": "query",
                         "required": true,
                         "allowEmptyValue": false,
@@ -416,7 +456,7 @@
                 "summary": "Play a card from your hand.",
                 "parameters": [
                     {
-                        "name": "playerId",
+                        "name": "userId",
                         "in": "query",
                         "required": true,
                         "allowEmptyValue": false,

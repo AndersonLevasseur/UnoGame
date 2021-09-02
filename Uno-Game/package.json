@@ -1,11 +1,10 @@
 {
   "name": "Uno-Game",
   "version": "1.0.0",
-  "description": "",
+  "description": "uno game api",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {},
@@ -26,8 +25,8 @@
     "type": "git",
     "url": "git+https://github.com/AndersonLevasseur/UnoGame.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Uno", "Game"],
+  "author": "Anderson Levasseur",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AndersonLevasseur/UnoGame/issues"

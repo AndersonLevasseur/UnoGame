@@ -146,6 +146,18 @@
                         }
                     },
                     {
+                        "name": "gameId",
+                        "in": "path",
+                        "required": true,
+                        "allowEmptyValue": false,
+                        "description": "The id of the game you are playing when you announce your status",
+                        "example": "abc123",
+                        "schema": {
+                            "type": "string",
+                            "nullable": false
+                        }
+                    },
+                    {
                         "name": "status",
                         "in": "query",
                         "required": true,

@@ -1,5 +1,5 @@
 {
-  "name": "Uno-Game",
+  "name": "uno-game",
   "version": "1.0.0",
   "description": "uno game api",
   "main": "index.js",
